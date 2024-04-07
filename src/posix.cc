@@ -138,6 +138,7 @@ void GetPwUid(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   return;
 }
 
+
 void GetGroupList(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (info.Length() < 1) {
     Nan::ThrowTypeError("getgrouplist requires 1 argument");
@@ -168,7 +169,7 @@ void GetGroupList(const Nan::FunctionCallbackInfo<v8::Value>& info) {
       return;
     }
     else {
-      Nan::ThrowError(Nan::ErrnoException(errno, "getpwnam_r"));
+     Nan::ThrowError(Nan::ErrnoException(errno, "getpwnam_r"));
       return;
     }
   }
@@ -181,7 +182,7 @@ void GetGroupList(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     result_t groups[ngrp];
 
     errno = 0;
-    err = getgrouplist(*name, gid, groups, &ngrp);
+//    err = getgrouplist(*name, gid, groups, &ngrp);
     if (err == -1) {
       // Not enough buffer space; ngrp has the necessary number
       continue;
